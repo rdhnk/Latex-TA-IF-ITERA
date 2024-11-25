@@ -44,7 +44,11 @@
 \usepackage{ragged2e}		% Alignment
 \usepackage{multirow}		% Untuk bisa merge cell di tabel
 \usepackage{tikz}			% Untuk menggambar kotak pas foto
-\usepackage{setspace}		% Spacing paragraph
+\usepackage{setspace}
+\newcommand{\dokumentspacing}{1.5}  % Nilai Spasi antar baris
+\newcommand{\setdocumentspacing}{%
+    \setstretch{\dokumentspacing}%
+}
 \usepackage{fancyhdr}		% Agar nomor halaman di pojok kanan atas
 \usepackage{caption} 		% Caption gambar & tabel
 
