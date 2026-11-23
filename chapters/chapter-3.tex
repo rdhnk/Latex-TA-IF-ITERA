@@ -1,58 +1,29 @@
-\newpage
-\chapter{METODE PENELITIAN} \label{Bab III}
+\babbaru{BAB III METODOLOGI}{%
+\petunjuk{Cara penelitian dilakukan, cukup rinci agar dapat direplikasi (Pedoman TA 7.3).}{\statusdua{\WAJIB}{\WAJIBF}}
+}
 
-\section{Alur Penelitian} \label{III.Alur}
-Pada penelitian ini, alur dirancang untuk memastikan setiap tahapan pemrosesan dilakukan secara sistematis dan efisien. Alur penelitian ini mencerminkan langkah-langkah utama terkait bagaimana proses yang dilakukan dalam penelitian, dari awal sampai dengan akhir. Gambarkan dalam bentuk diagram alir (\textit{flowchart}) seperti yang terlihat pada Gambar \ref{fig:3.alur}. \par
+\subbagian{3.1 Alur Penelitian}
+\phantomsection\addcontentsline{toc}{section}{3.1 Alur Penelitian}
+\petunjuk{Diagram alir tahapan (studi literatur, pengumpulan data, perancangan, implementasi, pengujian, analisis) dan penjelasan naratif tiap tahap.}{}
+\noindent\placeholder{[Sisipkan diagram alir penelitian, lalu narasi tiap tahap]}\par
 
-\begin{figure}[H] % Kalau menggunakan H, posisi gambar akan tepat dibawah teks
-    \centering
-    \includegraphics[width=0.6\textwidth]{figure/flowchart.jpg}
-    \caption{Alur Penelitian}
-    \label{fig:3.alur}
-\end{figure}
+\subbagian{3.2 Pengumpulan Data}
+\phantomsection\addcontentsline{toc}{section}{3.2 Pengumpulan Data}
+\petunjuk{Sumber data, karakteristik, metode pengumpulan, praproses, dan pembagian data latih/validasi/uji tanpa kebocoran data. Sertakan izin, etika, dan anonimisasi bila memakai data pribadi (UU No. 27 Tahun 2022). Uraikan secara naratif: sumber dan lisensi/izin, jumlah sampel dan atribut, metode pengumpulan, praproses, dan pembagian data.}{}
+\noindent\placeholder{[Tulis uraian dalam bentuk paragraf.]}\par
 
-\section{Penjabaran Langkah Penelitian} \label{III.Jabar Alur}
-Jelaskan secara general langkah-langkah alur penelitian, yang sudah tergambar dalam flowchart di subbab \ref{III.Alur}. Subsubbab berikut harus sesuai dengan jumlah entitas langkah pada alur penelitian. \par
+\subbagian{3.3 Perancangan Sistem/Model}
+\phantomsection\addcontentsline{toc}{section}{3.3 Perancangan Sistem/Model}
+\petunjuk{Arsitektur, pemilihan algoritma beserta justifikasi, hiperparameter, dan spesifikasi teknis. Untuk perangkat lunak sertakan UML (use case, class, sequence) atau DFD.}{}
+\noindent\placeholder{[Tulis uraian dalam bentuk paragraf.]}\par
 
-\subsection{Langkah 1} \label{III.Langkah 1}
-Penjelasan Langkah 1. \par
+\subbagian{3.4 Lingkungan Eksperimen}
+\phantomsection\addcontentsline{toc}{section}{3.4 Lingkungan Eksperimen}
+\petunjuk{Wajib untuk reprodusibilitas. Uraikan secara naratif: CPU / GPU / RAM, sistem operasi, bahasa pemrograman dan versi, framework/library dan versi, platform cloud (bila ada), seed acak, dan repositori kode.}{}
+\noindent\placeholder{[Tulis uraian dalam bentuk paragraf.]}\par
 
-\subsection{Langkah 2} \label{III.Langkah 2}
-Penjelasan Langkah 2. \par
-
-\section{Alat dan Bahan Tugas Akhir} \label{III.Alat dan Bahan}
-Berisi alat-alat dan bahan-bahan yang digunakan dalam penelitian. \par
-
-\subsection{Alat} \label{III.Alat}
-Alat yang digunakan untuk melakukan penelitian, dapat berupa computer, PC, Arduino, raspberry, etc. Contoh: \par
-\begin{enumerate}[noitemsep]
-	\item \textit{Notebook} dengan spesifikasi minumum sistem operasi Windows 11, processor AMD Ryzen 5 7430 CPU @ 6 core/2,3 GHz, RAM 16GB DDR4, grafis AMD Radeon RX Vega 7 2GB, SSD 512 GB.
-	\item \textit{Smartphone} dengan spesifikasi OS Android OS 12, CPU Snapdragon 778G Octa-core, GPU Adreno 642L, memori 128 GB, RAM 6 GB.
-	\item Platform game engine Godot v4.3
-	\item Code editor Microsoft Visual Studio Code
-	\item Github
-\end{enumerate}
-
-\subsection{Bahan} \label{III.Bahan}
-Bahan yang digunakan/diperlukan untuk melakukan penelitian, dapat berupa: \par
-\begin{enumerate}[noitemsep]
-	\item Dataset pihak lain yang diperoleh dengan izin atau dalam lisensi yang diizinkan untuk digunakan secara langsung,
-	\item Dataset pihak pertama yang disusun sendiri melalui quisioner, observasi, atau interview,
-	\item Dokumen panduan yang mengacu pada standar, hasil tugas akhir, atau artikel yang disitasi dan digunakan. 
-\end{enumerate}
-
-\section{Metode Pengembangan} \label{III.Metode}
-Membahas mengenai metode yang digunakan dalam penelitian, berdasarkan dasar teori yang sebelumnya sudah dijelaskan pada subbab \ref{II.Teori}. Setiap Tugas Akhir wajib memiliki metode dalam pelaksanaannya yang sesuai dengan penelitian yang dikerjakan: \par
-\begin{enumerate}[noitemsep]
-	\item Alur pengembangan tugas akhir, menggunakan flowchart
-	\item Cara pengumpulan data yang digunakan (Kuesioner, Wawancara, pengujian, dan lainnya)
-	\item Metode pengembangan tugas akhir (Metode Waterfall, Agile, RAD, dan lainnya).
-	\item Metode pengujian penelitian
-\end{enumerate}
-Subbab ini akan berhubungan erat dengan Bab \ref{Bab IV}. \par
-
-\section{Ilustrasi Perhitungan Metode} \label{III.Ilustrasi}
-Penjelasan contoh perhitungan bagi penelitian tugas akhir yang menggunakan algoritma perhitungan tertentu. Rumus perhitungan berdasarkan rumus yang sudah dijelaskan sebelumnya di Bab \ref{II.Teori}. \par
-
-\section{Rancangan Pengujian} \label{III.Rancang_Uji}
-Penjabaran terkait rancangan pengujian, pengujian perangkat keras, lunak, fungsional, dan non-fungsional. Berikan juga hipotesis hasil yang diharapkan dari penelitian. \par
+\subbagian{3.5 Metode Pengujian dan Evaluasi}
+\phantomsection\addcontentsline{toc}{section}{3.5 Metode Pengujian dan Evaluasi}
+\petunjuk{Metrik evaluasi beserta rumus (gunakan equation editor, nomor persamaan rata kanan) dan skenario uji, misalnya k-fold cross-validation, uji pada dataset terpisah, stress test, atau uji usabilitas.}{}
+\noindent\placeholder{[Tulis uraian dalam bentuk paragraf.]}\par
+\clearpage

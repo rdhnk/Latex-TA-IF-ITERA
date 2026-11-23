@@ -1,76 +1,53 @@
-\clearpage
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[R]{\thepage}
-\phantomsection% 
-\addcontentsline{toc}{chapter}{LEMBAR PENGESAHAN}
+\phantomsection\addcontentsline{toc}{chapter}{LEMBAR PENGESAHAN}
+\judulbagian{LEMBAR PENGESAHAN}
 
-\begin{center}
+\noindent Saya menyatakan bahwa Tugas Akhir berjudul ``\placeholder{[Judul Tugas Akhir, maksimal 16 kata]}'' merupakan hasil karya saya sendiri dan belum pernah diajukan, baik sebagian maupun seluruhnya, di Institut Teknologi Sumatera atau institusi pendidikan lain oleh saya maupun pihak lain.\par
 
-	\large \bfseries \MakeUppercase{Lembar Pengesahan}
-    
-    \small \normalfont \singlespacing \justify{
-    Saya menyatakan bahwa Tugas Akhir berjudul “{\thetitle}" merupakan hasil karya saya sendiri dan belum pernah diajukan, baik sebagian maupun seluruhnya, di Institut Teknologi Sumatera atau institusi pendidikan lain oleh saya maupun pihak lain.}
-    %Tugas Akhir Sarjana dengan judul "{\thetitle}" adalah benar dibuat oleh saya sendiri dan belum pernah dibuat dan diserahkan sebelumnya, baik sebagian ataupun seluruhnya, baik oleh saya ataupun orang lain, baik di Institut Teknologi Sumatera maupun di institusi pendidikan lainnya.
+\vspace{6pt}
+\noindent
+\begin{tabular*}{\textwidth}{@{}p{7.9cm}@{\extracolsep{\fill}}@{}p{3.0cm}@{}}
+\parbox[t]{7.8cm}{%
+  \singlespacing
+  Lampung Selatan, [tanggal]\par
+  \vspace{1.2cm}%
+  \placeholder{[Nama mahasiswa]}\par
+  \vspace{1pt}%
+  \placeholder{[NIM]}%
+} & \parbox[t]{3.0cm}{%
+  \centering
+  \fcolorbox{photoborder}{white}{\parbox[c][3.3cm][c]{2.6cm}{\centering\footnotesize\placeholder{[Pas foto 3×4\\ berwarna]}}}%
+}
+\end{tabular*}
 
-	% Informasi Mahasiswa
-    \flushleft
-	\setlength{\tabcolsep}{0pt}
-	\begin{tabular}{p{0.59\textwidth} p{0.3\textwidth}}
-        \vspace{0.1cm}
-		Lampung Selatan, \todayIndo & %
-		\multirow{6}{*}{
-			% Kotak pasfoto 3x4
-			\phantom{----------------------} % Amazing hack biar kotaknya ke kanan (RDB)
-			\begin{tikzpicture}
-				\draw rectangle (2cm,3cm) node[pos=0.5] {Foto 2x3};
-			\end{tikzpicture}
-		}\\
-		Penulis, \\
-		& \\
-		& \\
-		%& \\
-		\theauthor\\
-		NIM. \printnim
-	\end{tabular}
-	% Informasi Dosen
-	\vspace{0.4cm}
-        \begin{center}
-        Diperiksa dan disetujui oleh,
-        \end{center}
-        \vspace{0.1cm}
+\vspace{6pt}
+\begingroup\singlespacing
+\noindent Diperiksa dan disetujui oleh,\par
+\vspace{2pt}
+\noindent Pembimbing\par
+\vspace{1pt}
+\begingroup\setlength{\leftskip}{0.635cm}
+\noindent 1.[Nama dan gelar]\\
+\placeholder{NIP. [………………]}\par
+\endgroup
 
-	\justify
-    \setlength{\tabcolsep}{0pt}
-    \begin{tabular}{ m{0.5cm}  m{0.7\textwidth} >{\centering\arraybackslash}m{0.3\textwidth}}
-        \multicolumn{2}{c}{\hspace*{70pt}Pembimbing} & \multicolumn{1}{c}{} \\[2pt]
-		1. & \printnamadosbinga & \\
-		 & \printnipdosbinga & ............... \\%[4pt]
-		 & \\
-		2. & \printnamadosbinga & \\
-		& \printnipdosbinga & ............... \\%[4pt]
-		& \\
-		\multicolumn{2}{c}{\hspace*{70pt}Penguji} & \multicolumn{1}{c}{} \\[2pt]
-		1. & \printnamapengujia & \\
-		& \printnippengujia & ............... \\[4pt]
-            %& \\
-		2. & \printnamapengujib & \\
-		& \printnippengujib & ............... \\
-    \end{tabular}
-%	\vfill
+\vspace{4pt}
+\noindent Penguji\par
+\vspace{1pt}
+\begingroup\setlength{\leftskip}{0.635cm}
+\noindent 1.[Nama dan gelar]\\
+\placeholder{NIP. [………………]}\\[2pt]
+2.[Nama dan gelar]\\
+\placeholder{NIP. [………………]}\par
+\endgroup
 
-	\begin{center}
-		\fontsize{10pt}{10pt}
-        \vspace{0.45cm}
-		Disahkan oleh,\\
-		Koordinator Program Studi Teknik Informatika\\
-		Fakultas Teknologi Industri\\
-		Institut Teknologi Sumatera
-		\vspace{1.8cm}\\
-		Andika Setiawan, S.Kom., M.Cs. \\ % TODO: make automatic
-		NIP. 19911127 2022 03 1 007 \\
-	\end{center}
-	\vfill
-
-\end{center}
+\vspace{8pt}
+{\centering
+Disahkan oleh,\\
+Koordinator Program Studi Teknik Informatika\\
+Fakultas Teknologi Industri\\
+Institut Teknologi Sumatera\par
+\vspace{0.85cm}
+\placeholder{[Nama dan gelar]}\\
+\placeholder{NIP. [………………]}\par}
+\endgroup
 \clearpage
