@@ -1,179 +1,106 @@
-% !TeX root = thesis.tex
-%--------------------------------------------------------------------%
-%
-% Template TA LaTeX Teknik Informatika ITERA.
-% Editor: Radhinka Bagaskara, Martin C.T. Manullang, I Wayan Wiprayoga Wisesa, Jose Alfredo Sitanggang (IF 2016), Ardoni Yeriko Rifana Gultom (IF 2021), Syabana Minggus Noviantosa (IF 2018), Rizki Alfaina (IF 2021), Cornelius Linux (IF 2022)
-% Version 2026.1
-% TELAH DISESUAIKAN DENGAN FORMAT PERPUSTAKAAN ITERA MEI 2025 (UNESCO FORMAT)
-%
-% Berdasarkan "Templat LaTeX Tesis Informatika ITB" oleh Petra Barus & Peb Ruswono Aryan
-% https://github.com/petrabarus/if-itb-latex
-% Berdasarkan Pedoman Tugas Akhir Format Terbaru (UNESCO)
-% https://docs.google.com/document/d/1m2WutVlV-NSbEeZUKMPsThl__LI8m_bd
-%
-%--------------------------------------------------------------------%
-%
-% Berkas ini berisi struktur utama dokumen LaTeX yang akan dibuat.
-%
-%--------------------------------------------------------------------%
+% !TEX program = xelatex
+% ============================================================================
+%  Laporan Tugas Akhir -- Bentuk 1: Penelitian Konvensional
+%  Program Studi Teknik Informatika, Institut Teknologi Sumatera (ITERA)
+%  Format Standar Buku UNESCO (15,5 cm x 23,0 cm)
+%  Kompilasi: xelatex thesis.tex -> bibtex thesis -> xelatex thesis.tex
+% ============================================================================
+\documentclass[11pt,twoside]{report}
 
-% Set jenis dokumen Tugas Akhir
-\documentclass[article]{report} % Untuk versi perpustakaan
-\usepackage[paperwidth=155mm, % Setting layout kertas UNESCO (155 x 230 mm)
-			paperheight=230mm,
-			top=2cm, 
-			bottom=2cm, 
-			left=2cm,
-			right=2cm, 
-			includefoot, 
-			heightrounded, 
-			bindingoffset=0.5cm]
-			{geometry} 
+% Import konfigurasi dan metadata
+\input{config/config.sty}
+\input{config/informations.tex}
 
-\input{config/config.sty} % Import konfigurasi laporan
-\bibliography{references.bib} % Import list Daftar Pustaka
+% Import daftar pustaka
+\addbibresource{references.bib}
 
 \begin{document}
+\sloppy
+\onehalfspacing
 
-    %----------------------------------------------------------------%
-    % Konfigurasi Informasi Tugas Akhir
-    %----------------------------------------------------------------%
-    
-    % Judul Tugas Akhir, dalam Bahasa Indonesia	
-    \title{Judul Tugas Akhir Dengan Metode ABC (Studi Kasus: XYZ)}
-    % Judul Tugas Akhir dalam Bahasa Inggris
-    \titleEN{Thesis Title With ABC Method (Case Study: XYZ)}
-    % JUDUL AKAN DITULIS DALAM HURUF KAPITAL; Font size 16 pt; Bold; Tidak melebihi 4 baris
-    
-    % Informasi Mahasiswa
-	\author{Nama Mahasiswa}		% Nama Mahasiswa
-	\nim{123123123}				% NIM Mahasiswa
-	
-	%Informasi Dosen Pembimbing
-	\dosbingA%
-		{Dosen Pembimbing I}%			% Nama Dosen Pembimbing 1
-		{NIP. 19900000 2000 00 0 000}	% NIP Dosen Pembimbing 1
-	\dosbingB%
-		{Dosen Pembimbing II}%			% Nama Dosen Pembimbing 2
-		{NIP. 19900000 2000 00 0 000}	% NIP Dosen Pembimbing 2
-		
-	%Informasi Dosen Penguji
-	\pengujiA%
-		{Dosen Penguji I}%				% Nama Dosen Penguji 1
-		{NIP. 19900000 2000 00 0 000}	% NIP Dosen Penguji 1
-	\pengujiB%
-		{Dosen Penguji II}%				% Nama Dosen Penguji 2
-		{NIP. 19900000 2000 00 0 000}	% NIP Dosen Penguji 2
+% ============================================================================
+% BAGIAN SAMPUL (COVER) -- Tanpa nomor halaman
+% ============================================================================
+\input{chapters/cover-hard}
 
-	\sloppy % mencegah text overflow. (Jose)
-    \pagenumbering{roman}
-    \setcounter{page}{1} % Nomor halaman dimulai dengan "ii" di hal. Pengesahan
+% ============================================================================
+% BAGIAN DEPAN (FRONT MATTER) -- Penomoran Romawi kecil di tengah bawah
+% ============================================================================
+\pagenumbering{roman}
+\setcounter{page}{2}
+\pagestyle{depan}0
 
-	%----------------------------------------------------------------%
-	% Konten Laporan
-	%----------------------------------------------------------------%
-	\input{chapters/cover-hard} 	% Hardcover
-	\input{chapters/approval} 		% Lembar Pengesahan
-    %----------------------------------------------------------------%
-    % Aktivasi twoside (agar ada margin gutter 0.5 cm) & nomor halaman selang-seling
-    % mulai dari setelah Lembar Pengesahan (Ardoni)
-    \clearpage
-	\newgeometry{
-		top=2cm,
-		bottom=2cm,
-		left=2cm,
-		right=2cm,
-		includefoot,
-		heightrounded,
-		bindingoffset=0.5cm,
-		twoside % Agar halaman diset akan bolak-balik
-	}
-    \pagestyle{alternatingstyle}
-    %----------------------------------------------------------------%
-	\input{chapters/statement} 		% Halaman Pernyataan Orisinalitas
-	\input{chapters/publication} 	% Halaman Persetujuan Publikasi
-	\input{chapters/forewords} 		% Kata Pengantar
-	\input{chapters/motto} 			% Motto
-	\input{chapters/summary} 		% Ringkasan
-	\input{chapters/abstract-id} 	% Abstrak (Indonesia)
-	\input{chapters/abstract-en} 	% Abstrak (Inggris)    
-    %----------------------------------------------------------------%
-    % Halaman Daftar
-    %----------------------------------------------------------------%    
-	% Daftar Isi
-	\phantomsection% 
-	\addcontentsline{toc}{chapter}{DAFTAR ISI}
-	\tableofcontents
-	% Daftar tabel
-	\phantomsection% 
-	\addcontentsline{toc}{chapter}{DAFTAR TABEL}
-	\listoftables
-	% Daftar gambar
-	\phantomsection% 
-	\addcontentsline{toc}{chapter}{DAFTAR GAMBAR} % TODO: No halaman ga selang-seling di Daftar? (RDB)
-	\listoffigures
-	% Daftar rumus
-	% \pagestyle{daftarrumusstyle}
-	\phantomsection% 
-	\addcontentsline{toc}{chapter}{DAFTAR RUMUS}
-	\listofmyequations
-	% \thispagestyle{daftarrumusstyle}
-	% \pagebreak
-	%    \input{chapters/symbols}
-	% Daftar kode
-	\phantomsection% 
-	\addcontentsline{toc}{chapter}{DAFTAR KODE}
-	\lstlistoflistings
-	\pagebreak
-    %----------------------------------------------------------------%
-    % Konfigurasi Bab
-    %----------------------------------------------------------------%
-    \renewcommand{\chaptername}{BAB}
-    % Bab: Arabic
-    \renewcommand{\thechapter}{\Roman{chapter}}
-    % Sub-bab: Roman
-    \renewcommand\thesection{\arabic{chapter}.\arabic{section}}
-    % Setting supaya nomor halaman pertama dengan "chapter"
-    % berada di tengah bawah, tapi selanjut2nya di kanan atas
-    \fancypagestyle{plain}{%
-    	\fancyhf{}%
-    	\renewcommand{\headrulewidth}{0pt}
-    	\fancyhead[]{}
-    	\fancyfoot[C]{\thepage}
-    }
-    % Reset penomoran halaman menjadi 1
-    \setcounter{page}{1}
-    \pagenumbering{arabic}    
-    \justifying
-    % Mulai selang-seling halaman
-    \forceoddpage
-    \cleardoublepage
-    \pagestyle{alternatingstyle}
-    %----------------------------------------------------------------%
-    % Daftar Bab
-    % Untuk menambahkan daftar bab, buat berkas bab misalnya `chapter-6` di direktori `chapters`, dan masukkan ke sini.
-    %----------------------------------------------------------------%
-    \input{chapters/chapter-1}
-    \input{chapters/chapter-2}
-    \input{chapters/chapter-3}
-    \input{chapters/chapter-4}
-    \input{chapters/chapter-5}
-	%----------------------------------------------------------------%
-    % Daftar Pustaka
-    % Minimal 30 artikel Berbahasa Inggris, 15 artikel Berbahasa Indonesia, 3 Buku/E-Book Penunjang. Hanya dapat menggunakan situs resmi
-    \newpage
-    \phantomsection% 
-    \addcontentsline{toc}{chapter}{DAFTAR PUSTAKA}
-    \printbibliography[title={Daftar Pustaka}]
-	%----------------------------------------------------------------%
-    % Lampiran
-    %----------------------------------------------------------------%
-    % TODO: Tabel Lampiran
-    \newpage
-    \appendix
-    \addcontentsline{toc}{chapter}{LAMPIRAN}
-    \chapter*{Lampiran}
-    \renewcommand\thesection{\Alph{section}}
-    \input{chapters/appendix}
-    %----------------------------------------------------------------%
+\0input{chapters/approval}       % Lembar Pengesahan
+\input{chapters/statement}      % Halaman Pernyataan Orisinalitas
+\input{chapters/ai-statement}   % Halaman Pernyataan Penggunaan AI (Lampiran 2 Pedoman TA)
+\input{chapters/instruction}    % Petunjuk Pengisian & Peta Kewajiban
+\input{chapters/forewords}      % Kata Pengantar
+\input{chapters/abstract-en}    % Abstract (Bahasa Inggris)
+\input{chapters/abstract-id}    % Abstrak (Bahasa Indonesia)
+
+% ---------------------------------------------------------------- DAFTAR ISI
+\bagiandepan{DAFTAR ISI}
+\begingroup
+\singlespacing
+\fontsize{9.5}{11.5}\selectfont
+\renewcommand{\contentsname}{}
+\setcounter{tocdepth}{2}
+\setlength{\cftbeforechapskip}{2pt}
+\makeatletter
+\renewcommand{\tableofcontents}{\@starttoc{toc}}
+\makeatother
+\tableofcontents
+\endgroup
+
+% ---------------------------------------------------------------- DAFTAR TABEL
+\bagiandepan{DAFTAR TABEL}
+\begingroup
+\singlespacing
+\fontsize{9.5}{11.5}\selectfont
+\renewcommand{\listtablename}{}
+\makeatletter
+\renewcommand{\listoftables}{\@starttoc{lot}}
+\makeatother
+\listoftables
+\endgroup
+
+% ---------------------------------------------------------------- DAFTAR GAMBAR
+\bagiandepan{DAFTAR GAMBAR}
+\begingroup
+\singlespacing
+\fontsize{9.5}{11.5}\selectfont
+\renewcommand{\listfigurename}{}
+\makeatletter
+\renewcommand{\listoffigures}{\@starttoc{lof}}
+\makeatother
+\listoffigures
+\endgroup
+
+\clearpage
+
+% ============================================================================
+% BADAN LAPORAN (MAIN MATTER) -- Penomoran Arab mulai dari 1
+% ============================================================================
+\pagenumbering{arabic}
+\setcounter{page}{1}
+\pagestyle{badan}
+
+\input{chapters/chapter-1}      % BAB I PENDAHULUAN
+\input{chapters/chapter-2}      % BAB II TINJAUAN PUSTAKA
+\input{chapters/chapter-3}      % BAB III METODOLOGI
+\input{chapters/chapter-4}      % BAB IV HASIL DAN PEMBAHASAN
+\input{chapters/chapter-5}      % BAB V KESIMPULAN DAN SARAN
+
+% ============================================================================
+% BAGIAN AKHIR (BACK MATTER) -- Daftar Pustaka & Lampiran
+% ============================================================================
+\babbaru{DAFTAR PUSTAKA}{%
+\petunjuk{Gaya IEEE, diurutkan sesuai urutan kemunculan. Minimal 15 sumber, minimal 70\% dari 3 tahun terakhir. Hanya pustaka yang disitasi; cantumkan DOI bila ada.}{\statusdua{\WAJIB}{\WAJIB}}
+}
+
+{\singlespacing\noindent
+\placeholder{[1] [Penulis], ``[Judul],'' [Nama jurnal], vol. [x], no. [x], pp. [x--x], [tahun], doi: [………………………].}\par}
+
+\input{chapters/appendix}       % DAFTAR LAMPIRAN & LAMPIRAN 1--9
+
 \end{document}

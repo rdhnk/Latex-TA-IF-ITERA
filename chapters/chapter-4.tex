@@ -1,74 +1,22 @@
-\newpage
-\chapter{HASIL DAN PEMBAHASAN} \label{Bab IV}
+\babbaru{BAB IV HASIL DAN PEMBAHASAN}{%
+\petunjuk{Inti laporan: temuan dan interpretasinya (Pedoman TA 7.4). Revisi yang mengubah substansi bab ini tergolong revisi sedang atau mayor.}{\statusdua{\TIDAKPERLU}{\WAJIB}}
+}
 
-\section{Hasil Penelitian} \label{IV.Hasil}
-Berisi hasil penelitian berdasarkan rancangan yang sudah dijelaskan pada Bab \ref{Bab III}, terutama dari Subbab \ref{III.Metode}. Bagi yang membuat alat, jelaskan alat yang jadi dalam bentuk apa. Bagi yang membuat aplikasi, jelaskan aplikasi yang jadi dalam bentuk seperti apa. Jabarkan dalam bentuk pseudocode dan dijelaskan per bagian kodenya. Gunakan gambar dan tabel sebagai alat bantu menjelaskan hasil. \par
+\subbagian{4.1 Hasil Penelitian}
+\phantomsection\addcontentsline{toc}{section}{4.1 Hasil Penelitian}
+\petunjuk{Sajikan hasil sesuai urutan tahapan metodologi dalam tabel, grafik, atau diagram yang bernomor, berjudul, dan dirujuk di narasi.}{}
 
-Contoh implementasi kode dapat ditulis menggunakan \verb|\begin{lstlisting}|. Contoh kode dapat dilihat pada Kode \ref{code:4.contoh}. \par
-% Menulis blok kode
-\begin{lstlisting}[caption={Akuisisi Gambar}, label={code:4.contoh}]
-def process_dataset(dataset_path):
-	image_files = glob(os.path.join(dataset_path, '*.png'))
-	image_files.sort()
-	for image_file in image_files:
-		frame = cv2.imread(image_file)
-		if frame is None:
-			continue
-		frame_rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
-		cv2.imshow('Frame', frame)
-		if cv2.waitKey(1) & 0xFF == ord('q'):
-			break
-	cv2.destroyAllWindows()
-def main():
-	datasets = get_all_dataset_folders(DATASET_ROOT)
-	for dataset in datasets:
-		process_dataset(dataset)
-		print("print string")
-\end{lstlisting}
+\placeholder{[Tulis uraian dalam bentuk paragraf.]}\par
 
-\section{Hasil Pengujian} \label{IV.Hasil_Uji}
-Berikan hasil pengujian berdasarkan rancangan \& skenario yang sudah direncanakan sebelumnya pada Subbab \ref{III.Rancang_Uji}. \par
+\subbagian{4.2 Analisis dan Pembahasan}
+\phantomsection\addcontentsline{toc}{section}{4.2 Analisis dan Pembahasan}
+\petunjuk{Jelaskan makna dan pola data, bandingkan dengan penelitian terdahulu (Bab 2.2), identifikasi faktor yang memengaruhi hasil, dan jawab setiap rumusan masalah. Jangan sekadar mengulang isi tabel.}{}
 
-\begin{longtable}{|c|c|c|c|c|c|c|c|c|}
-	\caption{Data \textit{dummy} Pengujian}
-	\label{table:4.dummy}\\
-	\hline
-	\multirow{2}{*}{\textbf{Subjek}} & \multicolumn{7}{|c|}{\textbf{Hasil Prediksi (BPM)}} & \multirow{2}{*}{\textbf{GT}} \\ \cline{2-8}
-	& \textbf{F} & \textbf{NA} & \textbf{NO} & \textbf{RC} & \textbf{LC} & \textbf{M} & \textbf{C} & \\ 
-	\hline
-	\endfirsthead
-	\hline
-	\multirow{2}{*}{\textbf{Subjek}} & \multicolumn{7}{|c|}{\textbf{Hasil Prediksi (BPM)}} & \multirow{2}{*}{\textbf{GT}} \\ \cline{2-8}
-	& \textbf{F} & \textbf{NA} & \textbf{NO} & \textbf{RC} & \textbf{LC} & \textbf{M} & \textbf{C} & \\ 
-	\hline
-	\endhead
-	\hline
-	\endfoot
-	\hline
-	\endlastfoot
-	1 & 68 & 69 & 68 & 70 & 68 & 71 & 69 & 68 \\ 
-	\hline
-	2 & 69 & 69 & 68 & 70 & 68 & 71 & 69 & 69 \\
-	\hline
-	3 & 70 & 70 & 69 & 71 & 68 & 73 & 69 & 70\\
-	\hline
-	4 & 71 & 70 & 70 & 72 & 69 & 73 & 70 & 71 \\
-	\hline
-	5 & 72 & 72 & 70 & 72 & 70 & 74 & 70 & 72 \\
-\end{longtable}
+\placeholder{[Tulis uraian dalam bentuk paragraf.]}\par
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{figure/zeta.png}
-	\caption{Contoh Graf Pengujian}
-	\label{fig:4.graf}
-\end{figure}
+\subbagian{4.3 Keterbatasan Penelitian}
+\phantomsection\addcontentsline{toc}{section}{4.3 Keterbatasan Penelitian}
+\petunjuk{Akui secara jujur keterbatasan metode, dataset, lingkungan eksperimen, dan cakupan analisis.}{}
 
-\section{Analisis Hasil Penelitian} \label{IV.Analisis}
-Berikan analisis hasil penelitian \& pengujian, berupa data yang didapatkan dari penelitian \& pengujian Tugas Akhir yang sudah anda kerjakan. Gunakan gambar dan tabel sebagai alat bantu menjelaskan analisis hasil. Data luaran penelitian yang dapat dianalisis berupa: \par
-\begin{enumerate}[noitemsep]
-	\item Hasil pengujian
-	\item Hasil kuesioner
-	\item Aplikasi yang dikembangkan
-\end{enumerate}
-Analisis dapat membandingkan dengan hasil penelitian sebelumnya yang memiliki kemiripan topik. \par
+\placeholder{[Tulis uraian dalam bentuk paragraf.]}\par
+\clearpage

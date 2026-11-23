@@ -1,419 +1,204 @@
-%-------------------------------------------------------------------%
-%
-% Konfigurasi dokumen LaTeX untuk laporan tesis IF ITB
-% 
-%
-% @author Radhinka Bagaskara, Petra Novandi (ITB)
-%
-%-------------------------------------------------------------------%
-%
-% Berkas asli berasal dari Steven Lolong
-%
-%-------------------------------------------------------------------%
+% ============================================================================
+%  Konfigurasi LaTeX Laporan Tugas Akhir -- Program Studi Teknik Informatika
+%  Institut Teknologi Sumatera (ITERA) -- Format Buku UNESCO (15,5 cm x 23,0 cm)
+%  Selaras 100% dengan laporan-ta.tex dan Pedoman TA IF ITERA Changelog [1.2.0]
+% ============================================================================
 
-% Import package penting
-\usepackage[utf8]{inputenc}
-\usepackage{subcaption} % Paket untuk mengatur gambar berdampingan
-\usepackage{graphicx}
-\usepackage{titling}
-\usepackage{blindtext} % Untuk lorem ipsum
-\usepackage{sectsty} % Untuk header & judul
-\usepackage{chngcntr} % Untuk penambahan nomor caption
-\usepackage{etoolbox} % Untuk CRUD variabel (?)
-\usepackage{array} % % Untuk tabel di math mode
-\usepackage{float} % Untuk tabular
-\usepackage{longtable} % Untuk tabel yang potong halaman
-\usepackage{amsmath} % Untuk equation
-\usepackage{enumitem} % Untuk list enumerate yg lebih rapi
-\usepackage{nameref} % Untuk dapat menggunakan nameref, referensi dengan nama section/caption
-\usepackage[bookmarks]{hyperref}
-\usepackage{lipsum}
-\hypersetup{
-	colorlinks,
-	citecolor=black,
-	filecolor=black,
-	linkcolor=black,
-	urlcolor=black
+% ---------- Geometri Naskah UNESCO: 15,5 cm x 23,0 cm ----------
+% Margin: atas 2 cm, bawah 2 cm, sisi dalam (jilid) 2,5 cm, sisi luar 2 cm
+% Header dist: 1,23 cm (headsep=0.42cm), Footer dist: 1,06 cm (footskip=0.94cm)
+\usepackage[paperwidth=15.5cm,paperheight=23cm,%
+            top=2cm,bottom=2cm,inner=2.5cm,outer=2cm,%
+            headheight=10pt,headsep=0.42cm,footskip=0.94cm]{geometry}
+
+% ---------- Tipografi: Times New Roman 11 pt via TeXGyreTermesX / fontspec ----------
+\usepackage{fontspec}
+\IfFontExistsTF{TeXGyreTermesX-Regular.otf}{%
+  \setmainfont[
+    Path=D:/LaTex/fonts/opentype/public/newtx/,
+    UprightFont=TeXGyreTermesX-Regular.otf,
+    BoldFont=TeXGyreTermesX-Bold.otf,
+    ItalicFont=TeXGyreTermesX-Italic.otf,
+    BoldItalicFont=TeXGyreTermesX-BoldItalic.otf
+  ]{TeXGyreTermesX}
+}{%
+  \setmainfont{Times New Roman}
 }
 
-% Setting indensasi
-\usepackage{indentfirst}
-\usepackage{parskip}
-\usepackage[indentafter]{titlesec}
-\usepackage{microtype}
-%\setlength{\parindent}{20pt}
+% ---------- Bahasa & Pemenggalan Kata ----------
+\usepackage{polyglossia}
+\setdefaultlanguage{english}
+\setotherlanguage{bahasa}
+
+% ---------- Kontrol Spasi, Indentasi & Paragraf ----------
+\usepackage{setspace}      % Spasi baris 1,5 default naskah
+\usepackage{indentfirst}   % Indentasi pada paragraf pertama setelah judul
+\usepackage{ragged2e}      % Perataan teks
+
+% Sesuai templat Word: firstLine = 567 dxa = 1,0 cm pada seluruh narasi isi
+\setlength{\parindent}{1.0cm}
 \setlength{\parskip}{0pt}
-\newlength{\sectionindent}
-\settowidth{\sectionindent}{\thesection\hspace{0.965em}} % Agar indensasi paragraf selaras dengan indensasi judul subbab (Alfaina)
-\setlength{\parindent}{\sectionindent}
+\hyphenpenalty=10000       % Mencegah pemotongan kata berlebih di akhir baris
 
-% Linespacing 1.5. Tidak serupa dengan 1.5 di Word (RDB)
-\renewcommand{\baselinestretch}{1.5}
-
-% Agar tidak ada kata yang terpotong setiap baris kalimat
-\hyphenpenalty=10000
-
-% Font
-%\usepackage{mathptmx} 
-\usepackage{newtx} 
-% Times New Roman itu copyright dari Microsoft. Ini alternatifnya (RDB)
-
-% Judul bahasa Indonesia
-\usepackage[bahasa]{babel}
-
-% Format tanggal
-\usepackage[style=ddmmyyyy,datesep=-]{datetime2}
-
-% Format citation
-\usepackage[backend=bibtex,citestyle=ieee]{biblatex} % Untuk bisa jalan di Texstudio, harus backend=bibtex
-% Seriusan, JANGAN GANTI BACKENDNYA (RDB)
-
-% Remove "In:" before journal titles
-\renewbibmacro{in:}{}
-
-% Ensure URLs, DOIs, and ISSNs use the default font (e.g., Times New Roman)
-\renewcommand*{\UrlFont}{\rmfamily} % Use default font for URLs
-\DeclareFieldFormat{issn}{#1}       % Use default font for ISSN
-\DeclareFieldFormat{doi}{#1}        % Use default font for DOI
-
-% Remove DOI and URL fields if not needed (optional)
-\AtEveryBibitem{
-  \clearfield{doi}
-  \clearfield{url}
-}
-
-\DeclareLanguageMapping{bahasa}{english}
-
-% Package untuk link di daftar isi.
-%\usepackage{titlesec}       % Package Format judul
-%\usepackage{parskip}
-\usepackage{ragged2e}		% Alignment
-\usepackage{multirow}		% Untuk bisa merge cell di tabel
-\usepackage{tikz}			% Untuk menggambar kotak pas foto
-\usepackage{setspace}		% Spacing paragraph
-\usepackage{fancyhdr}		% Agar nomor halaman di pojok kanan atas
-\usepackage{caption} 		% Caption gambar & tabel
-\usepackage{comment}
-
-\captionsetup[figure]{font=footnotesize} % Mengatur caption gambar ke 10pt (footnotesize)
-\captionsetup[figure]{labelsep=space} % Mengubah ":" menjadi spasi setelah nomor gambar
-\captionsetup[table]{font=footnotesize}
-\captionsetup[table]{labelsep=space}
-\captionsetup[equation]{font=footnotesize}
-\captionsetup[lstlisting]{font=footnotesize, labelsep=space}
-
-% Setting supaya nomor halaman pertama dengan "chapter"
-% berada di kanan atas
-\fancypagestyle{plain}{%
-	\fancyhf{}%
-	\renewcommand{\headrulewidth}{0pt}
-	\fancyhead[R]{\thepage}
-}
-
-% Fancy header selang-seling kiri-kanan atas (Ardoni)
-\fancypagestyle{alternatingstyle}{
-  \fancyhf{} % Clear all headers and footers
-  \renewcommand{\headrulewidth}{0pt}
-  \fancyhead[RO]{\thepage} % Right Odd
-  \fancyhead[LE]{\thepage} % Left Even
-}
-
-\newcommand{\forceoddpage}{
-  \ifodd\value{page}
-  \else
-    \hbox{}
-    \newpage
-  \fi
-}
-
-% Setting judul
-\chapterfont{\centering \large}
-\titleformat{\chapter}[display]%
-  	{\large\centering\bfseries}%
-  	{\chaptertitlename\ \thechapter}{0pt}%
-  	{\large\bfseries\uppercase}
-\titleformat{\section}%
-	{\normalfont\normalsize\bfseries}{\thesection}{1em}{}
-\titleformat{\subsection}%
-	{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
-
-%\makeatletter
-%\def\@makechapterhead#1{%
-%  \vspace*{-2cm} % GESER KE ATAS (coba-coba sampai pas di margin)
-%  {\parindent \z@ \centering
-%   \normalfont
-%   \interlinepenalty\@M
-%   \Large\bfseries \MakeUppercase{\@chapapp\space \thechapter}\par\nobreak
-%   \vskip 0pt
-%   \Large\bfseries \MakeUppercase{#1}\par\nobreak
-%   \vskip 20pt
-%  }}
-%\makeatother
-
-    
-% Setting spacing di setiap judul chapter
-\titlespacing*{\chapter}{0pt}{0pt}{10pt}
-\titlespacing*{\section}{0pt}{10pt}{0pt}
-\titlespacing*{\subsection}{0pt}{10pt}{0pt}
-\titlespacing*{\subsubsection}{0pt}{10pt}{0pt}
-
-\usepackage{listings}
+% ---------- Paket Grafik, Tabel & Elemen Visual ----------
+\usepackage{graphicx}
+\usepackage{fancyhdr}
 \usepackage{xcolor}
-\usepackage{geometry}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{colortbl}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage{tikz}
+\usepackage{enumitem}
+\usepackage{amssymb}       % \square, \checkmark
+\usepackage{needspace}
+\usepackage{amsmath}
+\usepackage{subcaption}
+\usepackage{caption}
 
+% ---------- Palet Warna Resmi Templat Word (100% Exact Hex) ----------
+\definecolor{placeholdergray}{HTML}{7F7F7F} % Teks abu-abu: placeholder & petunjuk
+\definecolor{wajibred}{HTML}{C00000}        % Label status WAJIB
+\definecolor{opsionalolive}{HTML}{7F6000}   % Label status Opsional
+\definecolor{shadeheader}{HTML}{F2F2F2}     % Latar header tabel / Tidak diperlukan
+\definecolor{shadewajib}{HTML}{FCE4D6}      % Latar sel WAJIB
+\definecolor{shadeopsional}{HTML}{FFF2CC}   % Latar sel Opsional
+\definecolor{shadebiru}{HTML}{BDD6EE}       % Latar header Peta Kewajiban
+\definecolor{photoborder}{HTML}{808080}     % Bingkai pasfoto abu-abu 0,75 pt
 
-% Setting nomor pada subbsubsubbab
-\setcounter{secnumdepth}{3}
-
-% Counter untuk figure dan table, agar bertambah walaupun lintas subbab
-\counterwithout{figure}{section}
-\counterwithout{table}{section}
-
-% Supaya tidak ada garis di header
-\renewcommand{\headrulewidth}{0pt}
-
-% Setting daftar isi, daftar gambar, daftar tabel, daftar rumus
-\usepackage[titles]{tocloft}
-\setlength{\cftbeforechapskip}{5.2pt}
-% ------------------------------------------------------------------
-% Make the vertical gap before *every* figure/table entry the same:
-\setlength{\cftbeforefigskip}{0pt}   % or use whatever fixed length you like
-\setlength{\cftbeforetabskip}{0pt}
-% ------------------------------------------------------------------
-\cftsetindents{section}{1.5em}{2.3em}
-\cftsetindents{subsection}{3em}{3em}
-\cftsetindents{subsubsection}{4.5em}{4em}
-\setlength{\cfttabindent}{1.5em}
-\setlength{\cftfigindent}{1.5em}
-
-\usepackage{etoolbox}
-\makeatletter
-  % before starting any list: make addvspace do nothing
-  \pretocmd{\listoffigures}{\begingroup\renewcommand*{\addvspace}[1]{}}{}{}
-  \apptocmd {\listoffigures}{\endgroup}{}{}
-  \pretocmd{\listoftables} { \begingroup\renewcommand*{\addvspace}[1]{}}{}{}
-  \apptocmd {\listoftables} { \endgroup}{}{}
-\makeatother
-
-\setcounter{tocdepth}{3} 
-
-% Tambahkan kata "BAB" sebelum nomor bab di daftar isi
-\renewcommand*\cftchappresnum{\MakeUppercase{BAB}~}
-\renewcommand\chaptername{BAB}
-\settowidth{\cftchapnumwidth}{\cftchappresnum}
-\renewcommand{\cftchapaftersnumb}{\quad}
-\addtocontents{toc}{
-	\protect\renewcommand*\protect\cftchappresnum{\MakeUppercase{\chaptername}~}
+% ---------- Format Judul Bagian & Subbagian (Word Heading Replication) ----------
+% Judul Bagian Utama: tengah, tebal, 14pt, spasi 1, space-after 5pt
+\newcommand{\judulbagian}[1]{%
+  \noindent{\centering\bfseries\fontsize{14}{14}\selectfont #1\par}%
+  \vspace{5pt}%
 }
 
-\renewcommand{\cftchapleader}{\dotfill} 
-\renewcommand{\cftsecleader}{\dotfill}
-\renewcommand{\cftsubsecleader}{\dotfill}
-\renewcommand{\cftsubsubsecleader}{\dotfill}
-\renewcommand{\cftfigleader}{\dotfill}
-\renewcommand{\cfttableader}{\dotfill}
-
-% Nama daftar isi, gambar, tabel, rumus dalam bahasa Indonesia
-\addto\captionsbahasa{%
-	\renewcommand{\contentsname}{DAFTAR ISI}%
-	\renewcommand{\listfigurename}{DAFTAR GAMBAR}%
-	\renewcommand{\listtablename}{DAFTAR TABEL}%
+% Subbagian: rata kiri, tebal, 11pt, space-before 2pt, space-after 0pt
+\newcommand{\subbagian}[1]{%
+  \vspace{2pt}%
+  \noindent{\bfseries #1\par}%
 }
 
-% Setting daftar rumus
-\newcommand{\listequationsname}{DAFTAR RUMUS}
-\newlistof{myequations}{equ}{\listequationsname}
-\newcommand{\myequations}[1]{
-	\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}
+% Teks placeholder abu-abu
+\newcommand{\placeholder}[1]{\textcolor{placeholdergray}{#1}}
+
+% Label status regulasi Peta Kewajiban
+\newcommand{\WAJIB}{\textbf{\textcolor{wajibred}{WAJIB}}}
+\newcommand{\WAJIBF}{\textbf{\textcolor{wajibred}{WAJIB (final)}}}
+\newcommand{\WAJIBBILA}{\textbf{\textcolor{wajibred}{WAJIB bila berlaku}}}
+\newcommand{\OPSIONAL}{\textbf{\textcolor{opsionalolive}{Opsional}}}
+\newcommand{\TIDAKPERLU}{\textcolor{placeholdergray}{Tidak diperlukan}}
+
+% Blok petunjuk penulisan (miring 9.5pt abu-abu)
+\newcommand{\petunjuk}[2]{%
+  \noindent\begingroup\singlespacing\fontsize{9.5}{11.5}\selectfont\itshape\color{placeholdergray}%
+  \textbf{Petunjuk:} #1%
+  \ifx\\#2\\%
+  \else\ \ #2\fi
+  \par\endgroup%
+  \vspace{0.5pt}%
+}
+\newcommand{\statusdua}[2]{[\textit{Seminar proposal:} #1 \textperiodcentered\ \textit{Sidang akhir:} #2]}
+
+% ---------- Kop Halaman (fancyhdr) Sesuai Tabel 8.4 Pedoman TA ITERA ----------
+% 1. Sampul: tanpa nomor sama sekali
+\fancypagestyle{sampul}{%
+  \fancyhf{}\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}%
 }
 
-% Mengatur format daftar rumus
-\renewcommand{\cftmyequationspresnum}{}
-\newlength{\mylenf}
-\settowidth{\mylenf}{\cftmyequationspresnum}
-\setlength{\cftmyequationsnumwidth}{\dimexpr\mylenf+5em} % Menyesuaikan nomor
-\setlength{\cftmyequationsindent}{1.5em} % Menambahkan indentasi daftar rumus
-\renewcommand{\cftmyequationsleader}{\dotfill}
+% 2. Bagian Depan (front matter): nomor romawi kecil di footer tengah, header kosong
+\fancypagestyle{depan}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\fontsize{10}{10}\selectfont\thepage}%
+  \renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}%
+}
 
-% Setting penulisan rumus yang baru (Ardoni)
-\newenvironment{equationcaptioned}[3][]{%
-  \refstepcounter{equation}
-  \myequations{#3}
-  \begin{center} % TODO: Rumus harusnya rata kiri
-    \vspace{1em}
-    % Removed the fcolorbox and kept only the minipage
-    \begin{minipage}{0.9\linewidth}
-		\begin{spacing}{0.7} % ⬅️ Spasi 1.0 hanya di rumus
-			\begin{equation*}
-				#2
-				\ifstrempty{#1}{}{\label{#1}}
-			\end{equation*}
-		\end{spacing}
-		\begin{flushright}
-			(\footnotesize\theequation)
-		\end{flushright}
-    \end{minipage}
-  \end{center}
-  \vspace{0.5em}
-}{}
+% 3. Badan Laporan: nomor Arab di header luar (RO di ganjil, LE di genap), footer kosong
+\fancypagestyle{badan}{%
+  \fancyhf{}%
+  \fancyhead[RO]{\fontsize{10}{10}\selectfont\thepage}%
+  \fancyhead[LE]{\fontsize{10}{10}\selectfont\thepage}%
+  \renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}%
+}
 
-% Setting daftar gambar dan daftar tabel
-\renewcommand\cftfigpresnum{Gambar\ }
-\renewcommand\cfttabpresnum{Tabel\ }
+% 4. Halaman Pertama Tiap Bab / Lampiran: nomor Arab di footer tengah, header kosong
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\fontsize{10}{10}\selectfont\thepage}%
+  \renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}%
+}
 
-\settowidth{\mylenf}{\cftfigpresnum}
-\setlength{\cftfignumwidth}{\dimexpr\mylenf+1.5em}
-\setlength{\cfttabnumwidth}{\dimexpr\mylenf+0.5em}
+% Perintah transisi bab & bagian
+\newcommand{\babbaru}[2]{%
+  \clearpage
+  \thispagestyle{plain}%
+  \phantomsection\addcontentsline{toc}{chapter}{#1}%
+  \judulbagian{#1}%
+  #2%
+}
 
-% Setting penomoran caption gambar, tabel, dan rumus
+\newcommand{\bagiandepan}[1]{%
+  \clearpage
+  \phantomsection\addcontentsline{toc}{chapter}{#1}%
+  \judulbagian{#1}%
+}
+
+% ---------- Konfigurasi Caption Tabel & Gambar ----------
+\captionsetup[figure]{font=footnotesize,labelfont=bf,labelsep=space}
+\captionsetup[table]{font=footnotesize,labelfont=bf,labelsep=space}
+\captionsetup[lstlisting]{font=footnotesize,labelfont=bf,labelsep=space}
+
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
-\renewcommand\theequation{Rumus~\arabic{chapter}.\arabic{equation}} % Penomoran rumus berdasarkan Babnya (Minggus)
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
 
-\usepackage{listings}
-\usepackage{xcolor}
-\usepackage{geometry}
-
-% Pengaturan untuk penulisan blok kode (listings) (Ardoni)
-\lstset{
-    language=Python,                  	% Bahasa pemrograman
-    basicstyle=\ttfamily\scriptsize,	% Gaya font kode (diperkecil)
-    numbers=left,                      	% Menampilkan nomor baris di sisi kiri
-    numberstyle=\tiny\color{black},		% Warna nomor baris
-    showstringspaces=false,            	% Tidak menampilkan icon spasi dalam string
-    frame=single,                      	% Membuat frame di sekitar kode
-    rulecolor=\color{black},           	% Warna garis bingkai
-    breaklines=true,                   	% Membungkus kode jika lebih panjang dari satu baris
-    breakatwhitespace=true,           	% Membungkus di spasi
-    backgroundcolor=\color{white},    	% Warna latar belakang
-    commentstyle=\color{green}, 		% Warna untuk teks comment
-    keywordstyle=\color{blue}, 			% Warna untuk teks fungsi
-    stringstyle=\color{red},			% Warna untuk teks string
-    keepspaces=true,                   	% Menjaga spasi di dalam kode
-    xleftmargin=10pt,                 	% Margin kiri
-    xrightmargin=10pt,                 	% Margin kanan
-    aboveskip=0pt,                    	% Jarak di atas kode
-    belowskip=0pt,                    	% Jarak di bawah kode
-    lineskip=-1pt,
-    extendedchars=true                 	% Mengizinkan karakter non-ASCII
-    escapeinside={\%*}{*)}            	% Escape karakter LaTeX dalam listings
-}
-
-% Daftar Kode
+% ---------- Konfigurasi Daftar Isi, Tabel, & Gambar (tocloft) ----------
 \usepackage{tocloft}
-\newcommand{\listoflistingscaption}{DAFTAR KODE}
-\renewcommand{\lstlistingname}{Kode}
-\renewcommand{\lstlistlistingname}{\listoflistingscaption}
+\renewcommand{\cftchapfont}{\normalfont}
+\renewcommand{\cftchappagefont}{\normalfont}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftsecdotsep}}
+\setlength{\cftbeforechapskip}{2pt}
+\setlength{\cftbeforesecskip}{2pt}
 
-% Menentukan format penomoran untuk listings dengan angka Arab
-\makeatletter
-\renewcommand{\thelstnumber}{\@arabic\c@lstnumber}
-\makeatother
-
-% Menetapkan counter listings agar mengikuti chapter dan menggunakan format "chapter.listing"
-\makeatletter
-\@removefromreset{lstlisting}{chapter}  % Mencegah reset counter listing saat chapter berubah
-\makeatother
-\renewcommand{\lstlistingname}{Kode}
-\AtBeginDocument{\renewcommand{\thelstlisting}{\arabic{chapter}.\arabic{lstlisting}}}
-
-% Mengatur prefix "Kode" di daftar kode dengan nomor Arab
-\renewcommand{\lstlistoflistings}{%
-  \begingroup
-  \let\oldnumberline\numberline
-  \renewcommand{\numberline}[1]{Kode~##1~}
-  \listof{lstlisting}{\listoflistingscaption}
-  \endgroup
-}
-% Mengatur titik-titik pada daftar kode agar sama persis dengan daftar rumus
-\makeatletter
-% Definisikan kembali cara menampilkan daftar kode
-\renewcommand*\l@lstlisting[2]{%
-  \vskip \cftbeforelstlistingskip
-  \@dottedtocline{1}{1.5em}{6em}{#1}{%
-    \leaders\hbox{%
-      $\m@th \mkern \@dotsep mu \hbox{.}\mkern \@dotsep mu$%
-    }\hfill\nobreak#2%
-  }%
+% ---------- Konfigurasi Blok Kode Program (listings) ----------
+\usepackage{listings}
+\lstset{
+  language=Python,
+  basicstyle=\ttfamily\fontsize{9}{11}\selectfont,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  stepnumber=1,
+  numbersep=8pt,
+  showstringspaces=false,
+  frame=single,
+  rulecolor=\color{black!30},
+  backgroundcolor=\color{shadeheader},
+  breaklines=true,
+  breakatwhitespace=true,
+  commentstyle=\color{gray}\itshape,
+  keywordstyle=\color{blue}\bfseries,
+  stringstyle=\color{purple},
+  keepspaces=true,
+  xleftmargin=12pt,
+  xrightmargin=5pt,
+  aboveskip=8pt,
+  belowskip=8pt
 }
 
-% Pastikan nilai @dotsep sama dengan yang digunakan di daftar rumus
-\renewcommand\@dotsep{2.5}  % Coba nilai yang berbeda: 1.5, 2.0, 2.5, 3.0, dll.
-\makeatother
+% ---------- Konfigurasi Bibliografi (IEEE Style, BibTeX backend) ----------
+\usepackage[backend=bibtex,citestyle=ieee,bibstyle=ieee,sorting=none]{biblatex}
+\renewbibmacro{in:}{}
+\renewcommand*{\UrlFont}{\rmfamily}
+\DeclareFieldFormat{issn}{#1}
+\DeclareFieldFormat{doi}{#1}
 
-\usepackage{hyperref}
+% ---------- Konfigurasi Hyperref ----------
+\usepackage[hidelinks]{hyperref}
 \hypersetup{
-    colorlinks=true,
-    linkcolor=black,   % warna untuk \ref, \autoref, dll
-    urlcolor=blue,     % warna untuk \href (tautan web)
-    citecolor=black    % warna untuk \cite
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=black
 }
-
-\usepackage{cleveref}
-% Setelah paket cleveref dimuat
-\crefalias{lstlisting}{kode}
-\crefname{kode}{Kode}{Kode}
-\Crefname{kode}{Kode}{Kode}
-\newcommand{\coderef}[1]{Kode~\ref{#1}}
-
-% Untuk mengganti nama bulan di babel bahasa
-% tapi belum jalan (RDB)
-\StartBabelCommands*{bahasa}{date}
-\SetStringLoop{month#1name}{%
-	Januari,Februari,Maret,April,Mei,Juni,%
-	Juli,Agustus,September,Oktober,November,%
-	Desember}
-\EndBabelCommands     
-
-% english title
-\providecommand\titleEN[1]{\providecommand\thetitleEN{#1}}
-
-% Saya lupa ini buat apa (RDB)
-%\renewcommand{\theHsection}{\thepart.section.\thesection}
-
-% Semua dibawah ini berhubungan dengan CRUD variabel (ada simbol @)
-\makeatletter % Jangan dihapus
-
-% Command untuk variabel NIM
-\newcommand{\nim}[1]{\def\@nim{#1}}
-\newcommand{\printnim}{\@nim}
-
-% Command untuk variabel Dosen Pembimbing I & II
-\newcommand{\namadosbinga}[1]{\def\@namadosbinga{#1}}
-\newcommand{\namadosbingb}[1]{\def\@namadosbingb{#1}}
-\newcommand{\nipdosbinga}[1]{\def\@nipdosbinga{#1}}
-\newcommand{\nipdosbingb}[1]{\def\@nipdosbingb{#1}}
-\newcommand{\printnamadosbinga}{\@namadosbinga}
-\newcommand{\printnamadosbingb}{\@namadosbingb}
-\newcommand{\printnipdosbinga}{\@nipdosbinga}
-\newcommand{\printnipdosbingb}{\@nipdosbingb}
-\newcommand{\dosbingA}[2]{\namadosbinga{#1} \nipdosbinga{#2}}
-\newcommand{\dosbingB}[2]{\namadosbingb{#1} \nipdosbingb{#2}}
-
-% Command untuk variabel Dosen Penguji I & II
-\newcommand{\namapengujia}[1]{\def\@namapengujia{#1}}
-\newcommand{\namapengujib}[1]{\def\@namapengujib{#1}}
-\newcommand{\nippengujia}[1]{\def\@nippengujia{#1}}
-\newcommand{\nippengujib}[1]{\def\@nippengujib{#1}}
-\newcommand{\printnamapengujia}{\@namapengujia}
-\newcommand{\printnamapengujib}{\@namapengujib}
-\newcommand{\printnippengujia}{\@nippengujia}
-\newcommand{\printnippengujib}{\@nippengujib}
-\newcommand{\pengujiA}[2]{\namapengujia{#1} \nippengujia{#2}}
-\newcommand{\pengujiB}[2]{\namapengujib{#1} \nippengujib{#2}}
-
-% Command untuk variabel tanggal dengan format seperti "27 Juli 2025"
-\newcommand{\todayIndo}{\the\day~\ifcase\month
-	\or Januari\or Februari\or Maret\or April\or Mei\or Juni%
-	\or Juli\or Agustus\or September\or Oktober\or November\or Desember\fi~\number\year}
-
-% Command untuk merubah spacing equation
-\g@addto@macro\normalsize{%
-	\setlength\abovedisplayskip{-10pt}
-	\setlength\belowdisplayskip{-10pt}
-	\setlength\abovedisplayshortskip{-10pt}
-	\setlength\belowdisplayshortskip{-10pt}
-}
-
-\makeatother % Jangan dihapus
-
